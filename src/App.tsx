@@ -1,13 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Router } from 'react-router';
-import Navbar from './components/Navbar';
+import {BrowserRouter as Router , Route, Routes} from 'react-router-dom'
+import NavbarMain from './components/navbar/Navbar';
+import Dashboard from "./pages/dashboard/Dashboard";
+import ApprovedRejectRequest from "./pages/approvedRejectRequest/ApprovedRejectRequest";
+import NewBlocking from "./pages/newBlocking/NewBlocking";
+import NewMassDelete from "./pages/newMassDelete/NewMassDelete";
+import NewRefreshStore from "./pages/newRefreshStore/NewRefreshStore";
+import NewCloneStore from "./pages/newCloneStore/NewCloneStore";
+import Report from "./pages/report/Report";
 
 function App() {
 
   return (
-    <Navbar />
+      <>
+          <Router>
+              <NavbarMain />
+              <Routes>
+                  <Route path='/' element={<Dashboard />} />
+                  <Route path='/dashboard' element={<Dashboard />} />
+                  <Route path='/requestApproval' element={<ApprovedRejectRequest />} />
+                  <Route path='/blockingRequest' element={<NewBlocking />} />
+                  <Route path='/massDelete' element={<NewMassDelete />} />
+                  <Route path='/refreshStore' element={<NewRefreshStore />} />
+                  <Route path='/cloneStore' element={<NewCloneStore />} />
+                  <Route path='/report' element={<Report />} />
+              </Routes>
+
+          </Router>
+
+
+      </>
+
+
   );
 
 
