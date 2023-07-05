@@ -10,7 +10,7 @@ const ApprovalRequestRow : React.FC<RequestApprovalProps> = ({approvalRequest} )
 
     return (
         <>
-            <tr  className="focus:outline-none h-7 border border-gray-200 rounded">
+            <tr  className="focus:outline-none max-h-7  border border-gray-200 rounded">
                 <td>
                     <div className="flex items-center text-sm pl-2">
                         {approvalRequest.name}

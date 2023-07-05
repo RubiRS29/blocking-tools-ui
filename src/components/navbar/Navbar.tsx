@@ -5,45 +5,46 @@ import {
     List, ListItem, Typography,
 } from "@material-tailwind/react";
 import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/outline";
+import {Link, useLocation, useMatch, useResolvedPath} from "react-router-dom"
 
-import NavItem from "./NavItem"
 import {BsBoxArrowInRight} from "react-icons/bs";
+import NavItem from "./NavItem";
 
 const itemLinks = [
     {
         id:'dashboard',
         link: "/dashboard",
-        tittle: "Dashboard"
+        title: "Dashboard"
     }, 
     {
         id:'ar_request',
         link: "/requestApproval",
-        tittle: "Approve/Reject request"
+        title: "Approve/Reject request"
     },
     {
         id:'n_blocking',
         link: "/blockingRequest",
-        tittle: "New Blocking"
+        title: "New Blocking"
     },
     {
         id:'mass_delete',
         link: "/massDelete",
-        tittle: "New Mass Delete"
+        title: "New Mass Delete"
     },
     {
         id:'re_store',
         link: "/refreshStore",
-        tittle: "New Refresh Store"
+        title: "New Refresh Store"
     },
     {
         id:'c_store',
         link: "/cloneStore",
-        tittle: "New Clone Store"
+        title: "New Clone Store"
     },
     {
         id:'report',
         link: "/report",
-        tittle: "Report"
+        title: "Report"
     }
 
 ]
@@ -53,19 +54,16 @@ function NavList() {
         <List className="lg:mt-0 lg:mb-0 md:flex-row p-1">
 
             {itemLinks.map(item => (
-                <NavItem navProps={item} key={item.id} />
+                <NavItem link={item.link} title={item.title} key={item.id} />
             ))}
 
 
             <Typography
-                href={"#"}
                 variant="small"
                 color="blue-gray"
-                className="font-normal text-black text-sm">
-                <ListItem className="flex items-center gap-1 py-2 pr-4">
-                    <BsBoxArrowInRight />
-                    {11083087}
-                </ListItem>
+                className="font-normal text-black text-sm flex items-center gap-2 py-1 pr-3">
+                <BsBoxArrowInRight />
+                {11083087}
             </Typography>
         </List>
     );
@@ -74,18 +72,16 @@ function NavListBurger() {
     return (
         <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 flex-col lg:p-1 ">
             {itemLinks.map(item => (
-                <NavItem navProps={item} key={item.id} />
+                <NavItem link={item.link} title={item.title} key={item.id} />
             ))}
 
             <Typography
-                href={"#"}
                 variant="small"
                 color="blue-gray"
-                className="font-normal text-black text-sm">
-                <ListItem className="flex items-center gap-2 py-1 pr-3">
-                    <BsBoxArrowInRight />
-                    {11083087}
-                </ListItem>
+                className="font-normal text-black text-sm flex items-center gap-2 py-1 pr-3">
+                <BsBoxArrowInRight />
+                {11083087}
+
             </Typography>
         </List>
     );

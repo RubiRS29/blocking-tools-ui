@@ -1,21 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import {FaFileImport, FaRegFile} from "react-icons/fa";
 import QAState from "./QaState";
 import History from "./History";
 
 const TabMassDelete = () =>  {
-
     const [activeTab, setActiveTab] = useState(1);
-
 
     const handleActiveTab = (e:any) => {
         setActiveTab(e);
     }
-
-    useEffect(() => {
-        console.log(activeTab);
-    }, [activeTab]);
-
 
     return (
         <>

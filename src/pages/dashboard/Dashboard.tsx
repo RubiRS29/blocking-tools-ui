@@ -63,8 +63,8 @@ const Dashboard = () => {
                                 <th className="w-15 p-2 text-sm font-semibold tracking-wide text-left">Model Store Record</th>
                                 <th className="w-15 p-2 text-sm font-semibold tracking-wide text-left">New Store</th>
                                 <th className="w-15 p-2 text-sm font-semibold tracking-wide text-left">New Store Deleted</th>
-                                <th className="w-15 p-2 text-sm font-semibold tracking-wide text-left">New Store Added</th>
-                                <th className="w-15 p-2 text-sm font-semibold tracking-wide text-left">Channel</th>
+                                <th className="w-17 p-2 text-sm font-semibold tracking-wide text-left">New Store Added</th>
+                                <th className="w-10 p-2 text-sm font-semibold tracking-wide text-left">Channel</th>
                             </tr>
                             </thead>
 

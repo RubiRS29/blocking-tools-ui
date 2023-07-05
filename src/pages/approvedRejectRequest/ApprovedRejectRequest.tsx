@@ -10,7 +10,7 @@ const requestApprovalData = [
     {
         id : 1,
         name : "test",
-        requestType : "New blocking request",
+        requestType : "Mass delete request",
         approvalState : "Pending",
         creationDate : "2023-0621",
         createUser : "chemand"
@@ -18,7 +18,7 @@ const requestApprovalData = [
     {
         id : 1,
         name : "test",
-        requestType : "New blocking request",
+        requestType : "Mass delete request",
         approvalState : "Pending",
         creationDate : "2023-0621",
         createUser : "chemand"
@@ -89,7 +89,7 @@ const requestApprovalData = [
     {
         id : 1,
         name : "test",
-        requestType : "New blocking request",
+        requestType : "Store refresh request",
         approvalState : "Pending",
         creationDate : "2023-0621",
         createUser : "chemand"
@@ -97,7 +97,7 @@ const requestApprovalData = [
     ,{
         id : 1,
         name : "test",
-        requestType : "New blocking request",
+        requestType : "Store clone request",
         approvalState : "Pending",
         creationDate : "2023-0621",
         createUser : "chemand"
@@ -105,7 +105,7 @@ const requestApprovalData = [
     {
         id : 1,
         name : "test",
-        requestType : "New blocking request",
+        requestType : "Store refresh request",
         approvalState : "Pending",
         creationDate : "2023-0621",
         createUser : "chemand"
@@ -113,7 +113,7 @@ const requestApprovalData = [
     {
         id : 1,
         name : "test",
-        requestType : "New blocking request",
+        requestType : "Store clone request",
         approvalState : "Pending",
         creationDate : "2023-0621",
         createUser : "chemand"
@@ -121,7 +121,7 @@ const requestApprovalData = [
     ,{
         id : 1,
         name : "test",
-        requestType : "New blocking request",
+        requestType : "Store refresh request",
         approvalState : "Pending",
         creationDate : "2023-0621",
         createUser : "chemand"
@@ -129,7 +129,7 @@ const requestApprovalData = [
     {
         id : 1,
         name : "test",
-        requestType : "New blocking request",
+        requestType : "Store refresh request",
         approvalState : "Pending",
         creationDate : "2023-0621",
         createUser : "chemand"
@@ -146,7 +146,7 @@ const requestApprovalData = [
     ,{
         id : 1,
         name : "test",
-        requestType : "New blocking request",
+        requestType : "Store refresh request",
         approvalState : "Pending",
         creationDate : "2023-0621",
         createUser : "chemand"
@@ -154,7 +154,7 @@ const requestApprovalData = [
     {
         id : 1,
         name : "test",
-        requestType : "New blocking request",
+        requestType : "Store refresh request",
         approvalState : "Pending",
         creationDate : "2023-0621",
         createUser : "chemand"
@@ -166,20 +166,39 @@ const ApprovedRejectRequest = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [currentTotalRows, setCurrentTotalRows] = useState(0);
+    const [filterBy, setFilterBy] = useState('');
+    const [data, setData] = useState(requestApprovalData);
+
+
+    useEffect(() => {
+
+        if(filterBy.length > 0) {
+            const dataFilter = requestApprovalData.filter(ra => ra.requestType === filterBy);
+            setData(dataFilter);
+        }
+
+    }, [filterBy]);
+
 
 
     const currentTableData = useMemo(() => {
 
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
-        const dataSlice = requestApprovalData.slice(firstPageIndex, lastPageIndex);
+        const dataSlice = data.slice(firstPageIndex, lastPageIndex);
 
         let total = 0;
         total = currentTotalRows + dataSlice.length;
         setCurrentTotalRows(total);
-        return requestApprovalData.slice(firstPageIndex, lastPageIndex);
+        return data.slice(firstPageIndex, lastPageIndex);
 
-    }, [currentPage]);
+    }, [currentPage, data]);
+
+
+    //handles
+    const handleFilterRequest = (e:any) => {
+        setFilterBy(e.target.value);
+    }
 
 
     return (<>
@@ -205,6 +224,7 @@ const ApprovedRejectRequest = () => {
                             name="country"
                             autoComplete="country-name"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 sm:max-w-xs sm:text-sm sm:leading-6"
+                            onChange={handleFilterRequest}
                         >
                             <option>New blocking request</option>
                             <option>Store clone request</option>
@@ -217,7 +237,7 @@ const ApprovedRejectRequest = () => {
 
 
                 <div className="grid " >
-                    <table className="">
+                    <table className=" h-72">
                         <thead className="bg-gray-100 border-b-1 border-gray-200">
                         <tr >
                             <th className="w-15 p-2 text-sm font-semibold tracking-wide text-left">Name</th>
@@ -238,15 +258,19 @@ const ApprovedRejectRequest = () => {
 
                         </tbody>
                     </table>
+                </div>
+
+                <div className={"flex w-full justify-end"}>
 
                     <Pagination
                         currentPage={currentPage}
                         totalCount={currentTableData.length}
                         pageSize={PageSize}
                         onPageChange={page => setCurrentPage(page)}
-                        totalRows={requestApprovalData.length}
+                        totalRows={data.length}
                         currentTotalRows={currentTotalRows}
                     />
+
                 </div>
 
                 <div className={"flex flex-row gap-3 justify-end"}>

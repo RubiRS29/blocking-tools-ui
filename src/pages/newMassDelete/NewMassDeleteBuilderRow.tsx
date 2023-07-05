@@ -4,58 +4,56 @@ import {IconButton} from "@material-tailwind/react";
 import {FaRegTrashCan} from "react-icons/fa6";
 
 interface BlockingRequestBuilderProps {
-    blockingRequestBuilder: IBlockingRequestBuilder;
+    blockingRequestBuilder?: IBlockingRequestBuilder;
+    row?: number;
 }
 
-const NewMassDeleteBuilderRow : React.FC<BlockingRequestBuilderProps> = ({blockingRequestBuilder} ) => {
+const NewMassDeleteBuilderRow : React.FC<BlockingRequestBuilderProps> = ({blockingRequestBuilder,row} ) => {
 
     return (
         <>
-            <tr  className="focus:outline-none h-10 border border-gray-200 rounded">
+            <tr  className="focus:outline-none h-7 border border-gray-200 rounded">
                 <td>
                     <div className="ml-5">
                         <div className="">
-                            {blockingRequestBuilder.systemCode}
+                            {/*{blockingRequestBuilder?.systemCode}*/}
+                            {row}
                         </div>
                     </div>
                 </td>
                 <td className="">
                     <div className="flex items-center pl-5">
-                        <p className="text-base leading-none text-gray-700 mr-1">{blockingRequestBuilder.partTypeCode} </p>
+                        {blockingRequestBuilder?.partTypeCode}
+                        {row}
                     </div>
                 </td>
                 <td className="">
-                    <div className="flex items-center">
-                        <p className="text-sm leading-none text-gray-600 ml-1">{blockingRequestBuilder.partTypeDescription}</p>
+                    <div className="flex items-center pl-5">
+                        {blockingRequestBuilder?.partTypeDescription} {row}
                     </div>
                 </td>
                 <td className="">
-                    <div className="flex items-center">
-                        <p className="text-sm leading-none text-gray-600 ml-1">{blockingRequestBuilder.catalogCode}</p>
+                    <div className="flex items-center pl-5">
+                        {blockingRequestBuilder?.catalogCode} {row}
                     </div>
                 </td>
                 <td className="">
-                    <div className="flex items-center">
-                        <p className="text-sm leading-none text-gray-600 ml-1">{blockingRequestBuilder.catalogDescription}</p>
+                    <div className="flex items-center pl-5">
+                        {blockingRequestBuilder?.catalogDescription} {row}
                     </div>
                 </td>
                 <td className="">
-                    <div className="flex items-center">
-                        <p className="text-sm leading-none text-gray-600 ml-1">{blockingRequestBuilder.catBlocking}</p>
+                    <div className="flex items-center pl-5">
+                        {blockingRequestBuilder?.catBlocking} {row}
+                    </div>
+                </td>
+                <td className="">
+                    <div className="flex items-center pl-5">
+                        {blockingRequestBuilder?.channel } {row}
                     </div>
                 </td>
                 <td className="">
                     <div className="flex ">
-                        <p className="text-sm leading-none text-gray-600 ml-1">{blockingRequestBuilder.channel}</p>
-                    </div>
-                </td>
-                <td className="">
-                    <div className="flex ">
-                        <p className="text-sm leading-none text-gray-600 ml-1">{blockingRequestBuilder.domain}</p>
-                    </div>
-                </td>
-                <td className="">
-                    <div className="flex justify-center">
                         <IconButton
                             variant="text"
                             color="red" >

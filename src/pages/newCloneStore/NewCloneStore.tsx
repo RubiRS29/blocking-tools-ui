@@ -1,6 +1,6 @@
 import ActionButton from "../../components/ActionButton";
 import React from "react";
-import {FaPlus, FaRegCheckCircle} from "react-icons/fa";
+import {FaPlus} from "react-icons/fa";
 import NewCloneStoreRow from "./NewCloneStoreRow";
 
 const requestApproval = [
@@ -110,7 +110,7 @@ const NewCloneStore = () => {
                     </div>
 
                     <div className=" overflow-auto h-72" >
-                        <table className=" overflow-auto w-full h-80">
+                        <table className=" w-full ">
                             <thead className="bg-gray-100 border-b-1 border-gray-200 ">
                             <tr >
                                 <th className="w-15 p-2 text-sm font-semibold tracking-wide text-left">Row #</th>

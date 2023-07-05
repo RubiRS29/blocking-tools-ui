@@ -1,9 +1,10 @@
 import React from "react";
 import ActionButton from "../../components/ActionButton";
-import {FaFileDownload, FaFileExcel, FaPlus} from "react-icons/fa";
-import {Checkbox, IconButton, Radio} from "@material-tailwind/react";
+import {FaPlus} from "react-icons/fa";
+import {Checkbox, IconButton} from "@material-tailwind/react";
 import {FaRegCircleXmark} from "react-icons/fa6";
 import {FiDelete} from "react-icons/fi";
+import NewMassDeleteBuilderRow from "./NewMassDeleteBuilderRow";
 
 const blockingRequestBuilder = [
     {
@@ -106,7 +107,7 @@ const NewMassDeleteBuilder = () => {
                 {/*                         TABLE                  */}
                 <div className={"grid grid-cols-3 gap-4"}>
 
-                    <div className={"mt-6"}>
+                    <div className={"mt-6 overflow-auto h-44"}>
                         <table className="w-full">
                             <thead className="bg-gray-100 border-b-1 border-gray-200">
                             <tr >
@@ -116,14 +117,14 @@ const NewMassDeleteBuilder = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {/*{blockingRequestBuilder.map( ( request: IBlockingRequestBuilder) =>*/}
-                            {/*    <BlockingRequestBuilderRow blockingRequestBuilder={request} key={request.id} />*/}
-                            {/*)}*/}
+                            {Array.from({ length: 20 }, (_, index) => (
+                                <NewMassDeleteBuilderRow row={index + 1} />
+                            ))}
                             </tbody>
                         </table>
                     </div>
 
-                    <div className={"mt-6"}>
+                    <div className={"mt-6 overflow-auto h-44"}>
                         <table className="w-full">
                             <thead className="bg-gray-100 border-b-1 border-gray-200">
                             <tr >
@@ -132,9 +133,9 @@ const NewMassDeleteBuilder = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {/*{blockingRequestBuilder.map( ( request: IBlockingRequestBuilder) =>*/}
-                            {/*    <BlockingRequestBuilderRow blockingRequestBuilder={request} key={request.id} />*/}
-                            {/*)}*/}
+                            {Array.from({ length: 20 }, (_, index) => (
+                                <NewMassDeleteBuilderRow row={index + 1} />
+                            ))}
                             </tbody>
                         </table>
                     </div>
@@ -177,9 +178,9 @@ const NewMassDeleteBuilder = () => {
                 </div>
 
 
-                <div className={"mt-6"}>
+                <div className={"mt-6 overflow-auto h-44"}>
                     <table className="w-full">
-                        <thead className="bg-gray-100 border-b-1 border-gray-200">
+                        <thead className="bg-gray-100 border-b-1 border-gray-200 ">
                         <tr >
                             <th className="w-20 p-2 text-sm font-semibold tracking-wide text-left">System Code</th>
                             <th className="w-20 p-2 text-sm font-semibold tracking-wide text-left">Part Type Code</th>
@@ -192,9 +193,9 @@ const NewMassDeleteBuilder = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {/*{blockingRequestBuilder.map( ( request: IBlockingRequestBuilder) =>*/}
-                        {/*    <BlockingRequestBuilderRow blockingRequestBuilder={request} key={request.id} />*/}
-                        {/*)}*/}
+                        {Array.from({ length: 20 }, (_, index) => (
+                            <NewMassDeleteBuilderRow row={index + 1} />
+                        ))}
                         </tbody>
                     </table>
                 </div>
